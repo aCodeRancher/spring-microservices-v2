@@ -36,4 +36,15 @@ class SpringCloudConfigServerApplicationTests {
 				.andExpect(jsonPath("$.propertySources.[1].source.['limits-service.minimum']").value("1"))
 				.andExpect(jsonPath("$.propertySources.[1].source.['limits-service.maximum']").value("1111"));
 	}
+
+	@Test
+	void testMicroX() throws Exception {
+		//The default profile values are included
+		mockMvc.perform(get("/microservice-x/dev"))
+				.andExpect(jsonPath("$.profiles.[0]").value("dev"))
+				.andExpect(jsonPath("$.propertySources.[0].source.profile").value("dev"))
+				.andExpect(jsonPath("$.propertySources.[0].source.['microservice-x.name']").value("x"))
+				.andExpect(jsonPath("$.propertySources.[0].source.['microservice-x.developer']").value("helen"))
+				.andExpect(jsonPath("$.propertySources.[0].source.['microservice-x.description']").value("Fun Service"));
+	}
 }
