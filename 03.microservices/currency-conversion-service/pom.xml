@@ -69,6 +69,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.github.JensPiegsa</groupId>
+			<artifactId>wiremock-extension</artifactId>
+			<version>0.4.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.tomakehurst</groupId>
+			<artifactId>wiremock</artifactId>
+			<version>2.20.0</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>
@@ -89,7 +102,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>13</source>
+                    <target>13</target>
+                </configuration>
+            </plugin>
+        </plugins>
 	</build>
 
 	<repositories>
@@ -98,6 +119,12 @@
 			<name>Spring Milestones</name>
 			<url>https://repo.spring.io/milestone</url>
 		</repository>
+
+		 <repository>
+				<id>jitpack.io</id>
+				<url>https://jitpack.io</url>
+		 </repository>
+
 	</repositories>
 
 </project>
